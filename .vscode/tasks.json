@@ -1,0 +1,21 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "install nano pb",
+            "type": "shell",
+            "linux": {
+                "command": "cd /tmp && curl -LO https://jpa.kapsi.fi/nanopb/download/nanopb-0.4.4-linux-x86.tar.gz && tar xvf /tmp/nanopb-0.4.4-linux-x86.tar.gz -C ${workspaceFolder} && chmod u+x ${workspaceFolder}/nanopb-0.4.4-linux-x86/generator-bin/protoc"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "generate protobuf",
+            "type": "shell",
+            "linux": {
+                "command": "${workspaceFolder}/nanopb-0.4.4-linux-x86/generator-bin/nanopb_generator -I ${workspaceFolder}/config messages.proto && mv messages.pb.c src/ && mv messages.pb.h include/"
+            },
+            "problemMatcher": []
+        }
+    ]
+}
