@@ -19,12 +19,16 @@ jobs:
       # Setup toolchain
       - name: Install PlatformIO CLI
         run: python3 -c "$(curl -fsSL https://raw.githubusercontent.com/platformio/platformio/master/scripts/get-platformio.py)"
+
       - name: Install Protobuf-Compiler
-        run: apt install -y protobuf-compiler
+        run: |
+          PB_REL="https://github.com/protocolbuffers/protobuf/releases"
+          curl -LO $PB_REL/download/v3.13.0/protoc-3.13.0-linux-x86_64.zip
+          unzip protoc-3.13.0-linux-x86_64.zip -d $HOME/.local
 
       # Build
       - name: Build
         run: |
-          export PATH=$PATH:~/.platformio/penv/bin
+          export PATH="$PATH:$HOME/.platformio/penv/bin:$HOME/.local/bin"
           pio run
           protoc --version
