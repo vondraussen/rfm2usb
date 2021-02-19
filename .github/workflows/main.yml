@@ -23,11 +23,11 @@ jobs:
       - name: Install Protobuf-Compiler (NanoPB)
         run: |
           curl -LO https://jpa.kapsi.fi/nanopb/download/nanopb-0.4.4-linux-x86.tar.gz
-          tar xvf nanopb-0.4.4-linux-x86.tar.gz $HOME/.local
+          tar xvf nanopb-0.4.4-linux-x86.tar.gz $HOME
 
       # Build
       - name: Build
         run: |
-          export PATH="$PATH:$HOME/.platformio/penv/bin:$HOME/.local/nanopb-0.4.4-linux-x86/generator-bin"
+          export PATH="$PATH:$HOME/.platformio/penv/bin:$HOME/nanopb-0.4.4-linux-x86/generator-bin"
           pio run
           protoc --version
