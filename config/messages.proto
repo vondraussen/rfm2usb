@@ -1,0 +1,19 @@
+syntax="proto3";
+
+message State {
+    Node node = 1;
+    repeated Sensor sensor = 2;
+}
+
+message Node {
+    int32 id = 1;
+    int32 battery_mv = 2;
+    int32 software_version = 3;
+}
+
+message Sensor {
+    int32 temperature = 1;
+    int32 humidity = 2;
+    int32 light = 3;
+    int32 id = 4;
+}

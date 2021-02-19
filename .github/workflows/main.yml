@@ -26,8 +26,12 @@ jobs:
           tar xvf nanopb-0.4.4-linux-x86.tar.gz -C $HOME/
 
       # Build
+      - name: Generate Protobuf
+        run: |
+          export PATH="$PATH:$HOME/nanopb-0.4.4-linux-x86/generator-bin"
+          nanopb_generator -I config messages.proto && mv messages.pb.c src/ && mv messages.pb.h include/
+
       - name: Build
         run: |
-          export PATH="$PATH:$HOME/.platformio/penv/bin:$HOME/nanopb-0.4.4-linux-x86/generator-bin"
+          export PATH="$PATH:$HOME/.platformio/penv/bin"
           pio run
-          protoc --version
