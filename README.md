@@ -1,7 +1,7 @@
 # RFM2USB Firmware [![CI](https://github.com/vondraussen/rfm2usb/actions/workflows/main.yml/badge.svg?branch=master)](https://github.com/vondraussen/rfm2usb/actions/workflows/main.yml)
 > this is work in progress!
 
-Arduino based firmware for RFM2USB hardware which allows you to send and receive messages via RFM69 (sub gigahertz transceiver).
+Arduino based firmware for [RFM2USB](https://github.com/vondraussen/rfm2usb_hw) hardware which allows you to send and receive messages via RFM69 (sub gigahertz transceiver).
 
 Messages are protobuf encoded and printout via USB CDC as json string.
 ## Build
