@@ -16,13 +16,15 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      # Runs a single command using the runners shell
+      # Setup toolchain
       - name: Install PlatformIO CLI
-        run: |
-          python3 -c "$(curl -fsSL https://raw.githubusercontent.com/platformio/platformio/master/scripts/get-platformio.py)"
+        run: python3 -c "$(curl -fsSL https://raw.githubusercontent.com/platformio/platformio/master/scripts/get-platformio.py)"
+      - name: Install Protobuf-Compiler
+        run: apt install -y protobuf-compiler
 
-      # Runs a set of commands using the runners shell
+      # Build
       - name: Build
         run: |
           export PATH=$PATH:~/.platformio/penv/bin
           pio run
+          protoc --version
