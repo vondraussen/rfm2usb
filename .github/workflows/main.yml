@@ -20,15 +20,14 @@ jobs:
       - name: Install PlatformIO CLI
         run: python3 -c "$(curl -fsSL https://raw.githubusercontent.com/platformio/platformio/master/scripts/get-platformio.py)"
 
-      - name: Install Protobuf-Compiler
+      - name: Install Protobuf-Compiler (NanoPB)
         run: |
-          PB_REL="https://github.com/protocolbuffers/protobuf/releases"
-          curl -LO $PB_REL/download/v3.13.0/protoc-3.13.0-linux-x86_64.zip
-          unzip protoc-3.13.0-linux-x86_64.zip -d $HOME/.local
+          curl -LO https://jpa.kapsi.fi/nanopb/download/nanopb-0.4.4-linux-x86.tar.gz
+          tar xvf nanopb-0.4.4-linux-x86.tar.gz $HOME/.local
 
       # Build
       - name: Build
         run: |
-          export PATH="$PATH:$HOME/.platformio/penv/bin:$HOME/.local/bin"
+          export PATH="$PATH:$HOME/.platformio/penv/bin:$HOME/.local/nanopb-0.4.4-linux-x86/generator-bin"
           pio run
           protoc --version
