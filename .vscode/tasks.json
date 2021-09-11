@@ -13,7 +13,7 @@
             "label": "generate protobuf",
             "type": "shell",
             "linux": {
-                "command": "${workspaceFolder}/nanopb-0.4.4-linux-x86/generator-bin/nanopb_generator -I ${workspaceFolder}/config messages.proto && mv messages.pb.c src/ && mv messages.pb.h include/"
+                "command": "${workspaceFolder}/nanopb-0.4.4-linux-x86/generator-bin/nanopb_generator -I ${workspaceFolder}/config messages.proto && mv messages.pb.c src/ && mkdir -p include/ && mv messages.pb.h include/"
             },
             "problemMatcher": []
         }
